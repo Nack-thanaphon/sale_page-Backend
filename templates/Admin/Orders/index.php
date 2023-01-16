@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="card  p-2 m-1 table-responsive-lg">
-                <table id="ordersTable" class="display responsive nowrap" style="width:100%">
+                <table id="ordersTable" class="table table-responsive-lg display-nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>รายละเอียด</th>

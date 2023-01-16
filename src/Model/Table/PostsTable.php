@@ -43,14 +43,11 @@ class PostsTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
+        $this->belongsTo('Systems', [
+            'foreignKey' => 'system_id',
+        ]);
         $this->hasMany('Image', [
             'foreignKey' => 'post_id',
-        ]);
-        $this->belongsTo('PostsType', [
-            'foreignKey' => 'p_type_id',
-        ]);
-        $this->belongsTo('Users', [
-            'foreignKey' => 'p_user_id',
         ]);
     }
 
@@ -62,6 +59,10 @@ class PostsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
+        $validator
+            ->integer('system_id')
+            ->allowEmptyString('system_id');
+
         $validator
             ->scalar('p_title')
             ->requirePresence('p_title', 'create')
@@ -102,5 +103,19 @@ class PostsTable extends Table
             ->notEmptyDateTime('p_updated_at');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('system_id', 'Systems'), ['errorField' => 'system_id']);
+
+        return $rules;
     }
 }

@@ -44,7 +44,7 @@
                         <a href="<?= $this->Url->build(['controller' => 'Posts', 'action' => 'add']) ?>" class="btn btn-primary m-1">เพิ่มข่าวสาร</a>
                     </div>
                 </div>
-                <table id="example" class="display responsive nowrap" style="width:100%">
+                <table id="example" class="table table-responsive-lg display-nowrap" style="width:100%">
 
                     <thead>
                         <tr>
@@ -61,14 +61,17 @@
                                 <td class="w-60" style="width: 250px; overflow: hidden;height:150px ;">
 
                                     <a data-fslightbox href="<?php echo $this->Url->build($posts->image, ['fullBase' => true]); ?>">
-                                        <img class="w-100" style="object-fit:contain;" src="<?php echo $this->Url->build($posts->image, ['fullBase' => true]); ?>">
+                                        <img class="w-75" style="object-fit:contain;" src="<?php echo $this->Url->build($posts->image, ['fullBase' => true]); ?>">
                                     </a>
 
                                 </td>
-                                <td class="w-30">
-                                    <h5 class="m-0 p-0 "><?= $posts->title ?></a></p>
-                                        <small class="m-0 p-0 text-muted"><?= $posts->date ?></small><br>
-                                        <small class="m-0 p-0 text-muted"> <?= $posts->user ?></small>
+                                <td class="w-30 my-auto">
+                                    <h3 class="m-0 p-0 "><?= $posts->title ?></h3>
+                                    <p class="m-0 p-0 text-muted">ระบบจัดการ : <?= $posts->system ?></p>
+                                    <small class="m-0 p-0 text-muted">ผู้ลงข้อมูล : <?= $posts->user ?></small>
+                                    <br>
+                                    <hr>
+                                    <small class="m-0 p-0 text-muted">วัน/เดือน/ปี : <?= $posts->date ?></small><br>
                                 </td>
                                 <td class="w-10">
                                     <?= ($posts->status == 1 ? '<small class="badge badge-primary">เผยแพร่</small>' : '<small class="badge badge-danger">ไม่เผยแพร่</small>') ?>
@@ -85,12 +88,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        var t = $('#example').DataTable({
-            responsive: true,
-        });
-
-    });
-</script>

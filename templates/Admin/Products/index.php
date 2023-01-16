@@ -45,7 +45,7 @@
                         <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'add']) ?>" class="btn btn-primary m-1">เพิ่มสินค้า</a>
                     </div>
                 </div>
-                <table id="example" class="display responsive nowrap" style="width:100%">
+                <table id="example" class="table table-responsive-lg display-nowrap" style="width:100%">
 
                     <thead>
                         <tr>

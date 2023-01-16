@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="card  p-2 m-1">
-                <table id="example" class="display responsive nowrap" style="width:100%">   
+                <table id="example" class="table table-responsive-lg display-nowrap" style="width:100%">   
                 <thead>
                         <tr>
                             <th>รายละเอียด</th>

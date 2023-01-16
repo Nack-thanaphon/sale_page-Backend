@@ -40,30 +40,32 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'posts', 'action' => 'index']) ?>" class="nav-link">
-                        <i class="nav-icon fas fa-newspaper"></i>
-                        <p class="text-bold text-uppercase">
+                        <i class="nav-icon fas fa-sliders"></i>
+                        <p>
                             จัดการข่าวสาร
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                            <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'posts', 'action' => 'add']) ?>" class="nav-link">
+
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>เพิ่มระบบใช้งาน</p>
+                                <p>เพิ่มข่าวสาร</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'contact', 'action' => 'index']) ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>รายละเอียดระบบ</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="pages/mailbox/compose.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>สถิติการใช้งานระบบ</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -82,24 +84,22 @@
                         </p>
                     </a>
                 </li>
-
-
                 <li class="nav-item">
-                    <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'posts', 'action' => 'index']) ?>" class="nav-link">
+                    <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Banner', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p class="text-bold text-uppercase">
                             จัดการแบนเนอร์
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'branch', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p class="text-bold text-uppercase">
                             จัดการสาขา
                         </p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'orders', 'action' => 'index']) ?>" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
@@ -138,12 +138,12 @@
                                 <p>เพิ่มระบบใช้งาน</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="pages/mailbox/compose.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>สถิติการใช้งานระบบ</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

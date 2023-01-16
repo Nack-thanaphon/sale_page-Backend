@@ -42,6 +42,7 @@ class AppController extends Controller
         }
     }
 
+   
     public function getUsersId()
     {
         $session = $this->request->getSession();

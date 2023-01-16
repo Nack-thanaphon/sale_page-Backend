@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * Post Entity
  *
  * @property int $id
+ * @property int|null $system_id
  * @property string $p_title
  * @property int $p_type_id
  * @property int|null $p_user_id
@@ -35,6 +36,7 @@ class Post extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'system_id' => true,
         'p_title' => true,
         'p_type_id' => true,
         'p_user_id' => true,

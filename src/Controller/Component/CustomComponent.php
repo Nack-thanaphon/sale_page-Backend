@@ -21,6 +21,11 @@ class CustomComponent extends Component
         }
     }
 
+   
+
+
+
+
 
     public function GetUserData($token)
     {
@@ -388,9 +393,9 @@ class CustomComponent extends Component
         $getProductsType = $ProductsType->find('all')->toArray();
         return $getProductsType;
     }
-    
-   
-   
+
+
+
 
     public function getPromotion()
     {
@@ -405,7 +410,7 @@ class CustomComponent extends Component
         return $Productstype;
     }
 
- 
+
     public function countProduct()
     {
         $table = TableRegistry::getTableLocator()->get('Products');
@@ -425,6 +430,4 @@ class CustomComponent extends Component
         $countBranch = $table->find()->count();
         return $countBranch;
     }
-   
-    
 }

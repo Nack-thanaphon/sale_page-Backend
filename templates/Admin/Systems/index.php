@@ -44,7 +44,7 @@
                         <a href="<?= $this->Url->build(['controller' => 'systems', 'action' => 'add']) ?>" class="btn btn-primary m-1">เพิ่มระบบใช้งาน</a>
                     </div>
                 </div>
-                <table id="example" class="display responsive nowrap " style="width:100%">
+                <table id="example" class="table table-responsive-lg display-nowrap " style="width:100%">
 
                     <thead>
                         <tr>
@@ -63,8 +63,8 @@
                                     <h5 class="m-0 p-0 "><?= $key + 1 ?></a></p>
                                 </td>
                                 <td width="30">
-                                    <h5 class="m-0 p-0 "><?= $system->name ?></a></h5>
-                                    <small class="m-0 p-0 text-muted">TOKEN : <?= $system->token ?></small>
+                                    <h5 class="m-0 p-0 text-primary"><?= $system->name ?></a></h5>
+                                    <!-- <small class="m-0 p-0 text-muted">TOKEN : <?= $system->token ?></small> -->
                                 </td>
                                 <td width="10">
                                     <small class="m-0 p-0 text-muted"><?= $system->path ?></small><br>

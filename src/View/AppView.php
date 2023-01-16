@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -13,9 +14,11 @@ declare(strict_types=1);
  * @since     3.0.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\View;
 
 use Cake\View\View;
+use Cake\ORM\TableRegistry;
 
 /**
  * Application View
@@ -35,9 +38,28 @@ class AppView extends View
      *
      * @return void
      */
-    public function initialize():void
+    public function SYSTEM_OPTION($checked = null)
     {
-        $this->loadHelper('Authentication.Identity');
-        $this->loadHelper('Custom');
+        $table = TableRegistry::getTableLocator()->get('systems');
+        $SystemData  = $table->find()
+            ->select([
+                'id' => 'systems.id',
+                'name' => 'systems.name',
+            ])
+            ->where([
+                'systems.status' => 1
+            ])
+            ->toArray();
+
+        $option = '';
+
+        foreach ($SystemData as $data) {
+            $option .=  '<option class="form-control" value=' . $data->id . ' ';
+            if ($data->id == $checked) {
+                $option .= 'selected';
+            }
+            $option .=   '>' . $data->name . '</option>';
+        }
+        echo $option;
     }
 }

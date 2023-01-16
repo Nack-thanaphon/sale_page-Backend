@@ -1,8 +1,10 @@
 
+
 $(".delete").attr("onclick", "").unbind("click"); //remove function onclick button
 
 $(document).on('click', '.delete', function () {
     let delete_form = $(this).parent().find('form');
+
 
     Swal.fire({
         title: 'คุณแน่ใจใช่ไหม?',
@@ -38,6 +40,28 @@ var singleimagesPreview = function (input) {
 
 };
 
+//  $(document).ready(function() {
+
+$('#example').DataTable({
+    columnDefs: [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 4, targets: -1 }
+    ],
+    responsive: true,
+    stateSave: true,
+    language: {
+        "lengthMenu": "แสดงข้อมูล _MENU_ แถว",
+        "zeroRecords": "ไม่พบข้อมูลที่ต้องการ",
+        "info": "แสดงหน้า _PAGE_ จาก _PAGES_",
+        "infoEmpty": "ไม่พบข้อมูลที่ต้องการ",
+        "infoFiltered": "(ค้นหาจาก _MAX_ ทั้งหมด รายการ)",
+        "search": 'ค้นหา',
+        "paginate": {
+            "previous": "ก่อนหน้านี้",
+            "next": "หน้าต่อไป"
+        }
+    }
+})
 
 var Payment_Preview = function (input) {
 
@@ -76,47 +100,23 @@ var count = 0;
 
 
 function select_product(id, name, img, price) {
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success m-2',
-            cancelButton: 'btn btn m-2'
-        },
-        buttonsStyling: false
-    })
+    var item = cart_list.find(item => item.id === id);
 
-    swalWithBootstrapButtons.fire({
-        text: "ต้องการเพิ่มสินค้าในตะกร้าใช่ไหม",
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonText: 'ใช่, เพิ่มเลย!',
-        cancelButtonText: 'ยกเลิก',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            var item = cart_list.find(item => item.id === id);
-
-            if (item) {
-                item.count++;
-            } else {
-                cart_list.push({
-                    id,
-                    img,
-                    name,
-                    price,
-                    count: 1
-                })
-            }
-            localStorage.setItem('cart_list', JSON.stringify(cart_list));
-            cart();
-            precal()
-            toastr.success("เพิ่มสินค้าในตะกร้าเรียบร้อย")
-
-        } 
-    })
-
-
+    if (item) {
+        item.count++;
+    } else {
+        cart_list.push({
+            id,
+            img,
+            name,
+            price,
+            count: 1
+        })
+    }
+    localStorage.setItem('cart_list', JSON.stringify(cart_list));
+    cart();
+    precal()
 }
-
 
 
 function cart() {
@@ -131,7 +131,7 @@ function cart() {
                         <small id="countitems${i}">จำนวน : ${cart_list[i].count} ชิ้น</small>
                     </div>
                     <div>
-                        <i class="fas fa-trash-alt" type="button" onclick="delete_product(${cart_list[i].id})"></i>
+                        <i class="fas fa-trash-alt" onclick="delete_product(${cart_list[i].id})"></i>
                     </div>
                 </div>
             </div> `
@@ -204,8 +204,16 @@ function delete_product(id) {
 
     localStorage.setItem('cart_list', JSON.stringify(cart_list));
 
+    // count--
+
+    // if (cart_list[i].count > 0) {
+    //     cart_list[i].count--;
+    //     localStorage.setItem("cart_list", cart_list[i].count);
+    //     $("#countitems" + i).text(`จำนวน : ${cart_list[i].count} ชิ้น`)
+    // }
+    // if (cart_list[i].count <= 0) {
+    //     $("#productItem" + id).remove();
+    // }
     cart()
     precal()
-    toastr.success("ลบสินค้าออกจากตะกร้าเรียบร้อย")
-
 }

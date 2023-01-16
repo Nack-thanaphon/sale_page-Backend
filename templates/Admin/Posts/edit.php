@@ -50,8 +50,13 @@
             <input type="hidden" id="pId" value="<?= $Posts->id ?>">
 
             <div class="form-group">
-
-                <div class="form-floating mb-1">
+                <div class="form-floating mb-2">
+                    <label>ระบบที่ใช้งาน</label>
+                    <select name="system_id" class="form-control selectpicker">
+                        <?= $this->SYSTEM_OPTION($Posts->system_id); ?>
+                    </select>
+                </div>
+                <div class="form-floating mb-2">
                     <label>วันเดือนปี</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -61,28 +66,29 @@
                     </div>
 
                 </div>
-                <div class="form-floating mb-1">
+                <div class="form-floating mb-2">
                     <label>หัวข้อ</label>
                     <?= $this->Form->input('p_title', ['class' => 'form-control ', 'placeholder' => 'ชื่อสินค้า']); ?>
                 </div>
-                <div class="form-floating mb-1">
+
+                <div class="form-floating mb-2">
                     <label>ชนิดบทความ</label>
                     <select name="p_type_id" class="form-control selectpicker">
                         <?php
                         foreach ($PostsType as $row) {
-                            echo '<option value="' . $row->pt_id . '" >' . $row->pt_name . '</option>';
+                            echo '<option value="' . $row->pt_id . '"  >' . $row->pt_name . '</option>';
                         }
                         ?>
                     </select>
                 </div>
-                <div class="form-floating mb-1">
+                <div class="form-floating mb-2">
                     <label>รายละเอียดบทความ</label>
                     <textarea name="p_detail" id="editor1" rows="10" cols="80" required><?= $Posts->p_detail ?></textarea>
                 </div>
 
                 <div class=" row m-0 p-0 ">
                     <div class="col-12 col-sm-12 m-0 p-0">
-                        <div class="form-floating mb-1">
+                        <div class="form-floating mb-2">
                             <label>สถานะบทความ</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="p_status" value='1' <?php echo ($Posts->p_status == 1) ? "checked" : ""  ?>>
@@ -315,7 +321,7 @@
     }
     // var dateString = $.datepicker.formatDate("dd-mm-yy", );
 
-// console.log(dateString)
+    // console.log(dateString)
     $(function() {
         $("#editnew").datepicker({
             todayHighlight: true, // to highlight the today's date

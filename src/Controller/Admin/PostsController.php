@@ -15,6 +15,7 @@ class PostsController extends AppController
                 'title' => 'posts.p_title',
                 'type' => 'p.pt_name',
                 'status' => 'posts.p_status',
+                'system' => 'system.name',
                 'detail' => 'posts.p_detail',
                 'user' => 's.name',
                 'date' => 'posts.p_created_at',
@@ -38,6 +39,11 @@ class PostsController extends AppController
                     'table' => 'users',
                     'type' => 'INNER',
                     'conditions' => 's.id = posts.p_user_id',
+                ],
+                'system' => [
+                    'table' => 'systems',
+                    'type' => 'INNER',
+                    'conditions' => 'system.id = posts.system_id',
                 ],
             ])
             ->where([
@@ -112,6 +118,7 @@ class PostsController extends AppController
                 "p_detail" => $this->request->getData('p_detail'),
                 "p_type_id" => $this->request->getData('p_type_id'),
                 "p_date" => $this->request->getData('p_date'),
+                "system_id" => $this->request->getData('system_id'),
                 "p_user_id" => $Userid,
                 "p_views" => 0,
                 "p_status" => $this->request->getData('p_status'),
